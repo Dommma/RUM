@@ -24,8 +24,8 @@ class MainRepository @Inject constructor(
             try {
                 val response = drinkService.fetchAllDrinks()
                 response.body()?.let {
-                    drinkDao.insertDrinkList(it)
-                    emit(it)
+                    drinkDao.insertDrinkList(it.drinks)
+                    emit(it.drinks)
                 }
             } catch (throwable: Throwable) {
                 emit(onError("Betöltési hiba"))

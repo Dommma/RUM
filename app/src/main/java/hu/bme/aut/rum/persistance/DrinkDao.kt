@@ -5,10 +5,10 @@ import hu.bme.aut.rum.model.Drink
 
 @Dao
 interface DrinkDao {
-    @Query("SELECT * from drink")
+    @Query("SELECT * from drink_database")
     fun getAllDrinks(): List<Drink>
 
-    @Query("SELECT * from drink WHERE id = :id")
+    @Query("SELECT * from drink_database WHERE idDrink = :id")
     fun getDrink(id: Int): Drink
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
