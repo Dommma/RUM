@@ -5,14 +5,14 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "drink")
+@Entity(tableName = "drink_database")
 data class Drink(
-    @PrimaryKey(autoGenerate = true)  val id: Int,
-    val name: String,
-    val type: String,
-    @ColumnInfo(name = "image_url") val imageUrl: String,
-    val ingredients: String,
-    val description: String?
+    val type: String? = "",
+    val ingredients: String? = "",
+    val description: String? = "",
+    val strDrink: String,
+    val strDrinkThumb: String,
+    @PrimaryKey val idDrink: String
 ) {
-    constructor(): this(0,"", "", "", "", "")
+    constructor(): this("", "" ,"", "", "", "")
 }
