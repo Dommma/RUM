@@ -9,7 +9,7 @@ interface DrinkDao {
     fun getAllDrinks(): List<Drink>
 
     @Query("SELECT * from drink_database WHERE idDrink = :id")
-    fun getDrink(id: Int): Drink
+    fun getDrink(id: String): Drink?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertDrinkList(drinks: List<Drink>)

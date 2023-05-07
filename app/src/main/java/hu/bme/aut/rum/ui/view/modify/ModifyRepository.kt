@@ -11,7 +11,7 @@ class ModifyRepository @Inject constructor(
     private val drinkDao: DrinkDao
 ) {
     @WorkerThread
-    fun getDrinkById(id: Int) = flow {
+    fun getDrinkById(id: String) = flow {
         val drink = drinkDao.getDrink(id)
         emit(drink)
     }.flowOn(Dispatchers.IO)

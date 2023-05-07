@@ -11,11 +11,11 @@ class ModifyViewModel @Inject constructor(
     modifyRepository: ModifyRepository
 ): ViewModel() {
 
-    private val drinkIdSharedFlow: MutableSharedFlow<Int> = MutableSharedFlow(replay = 1)
+    private val drinkIdSharedFlow: MutableSharedFlow<String> = MutableSharedFlow(replay = 1)
 
     val drinkFlow = drinkIdSharedFlow.flatMapLatest {
         modifyRepository.getDrinkById(it)
     }
 
-    fun loadDrinkById(id: Int) = drinkIdSharedFlow.tryEmit(id)
+    fun loadDrinkById(id: String) = drinkIdSharedFlow.tryEmit(id)
 }

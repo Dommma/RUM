@@ -8,14 +8,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SingleViewViewModel @Inject constructor(
-
     singleViewRepository: SingleViewRepository
 ): ViewModel() {
-    private val drinkIdSharedFlow: MutableSharedFlow<Int> = MutableSharedFlow(replay = 1)
+    private val drinkIdSharedFlow: MutableSharedFlow<String> = MutableSharedFlow(replay = 1)
 
     val drinkFlow = drinkIdSharedFlow.flatMapLatest {
         singleViewRepository.getDrinkById(it)
     }
 
-    fun loadDrinkById(id: Int) = drinkIdSharedFlow.tryEmit(id)
+    fun loadDrinkById(id: String) = drinkIdSharedFlow.tryEmit(id)
 }
